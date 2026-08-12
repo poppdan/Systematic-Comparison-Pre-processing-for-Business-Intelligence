@@ -1,0 +1,56 @@
+,importance
+Frequency UniqueProducts,0.09099589
+Frequency,0.06516387
+Frequency PurchaseSpan,0.036018234
+UniqueProducts PurchaseSpan,0.025654351
+Monetary ReturnsFlag,0.02260949
+Frequency AvgItemsPerOrder,0.021775048
+Monetary UniqueProducts,0.01931149
+Frequency TotalItems,0.018974425
+Monetary PurchaseSpan,0.01851308
+PurchaseSpan ReturnsFlag,0.017782593
+Recency AvgOrderValue,0.017401973
+PurchaseSpan AvgItemsPerOrder,0.016647637
+Recency,0.016581511
+UniqueProducts AvgOrderValue,0.016495999
+Frequency AvgOrderValue,0.016403513
+PurchaseSpan AvgOrderValue,0.016395476
+Recency ReturnsFlag,0.016128842
+TotalItems AvgDaysBetween,0.016115265
+TotalItems PurchaseSpan,0.015994687
+UniqueProducts AvgItemsPerOrder,0.015957741
+AvgDaysBetween AvgItemsPerOrder,0.01591903
+Frequency Monetary,0.015898185
+TotalItems ReturnsFlag,0.015699342
+AvgOrderValue ReturnsFlag,0.0156642
+UniqueProducts TotalItems,0.015635408
+TotalItems AvgItemsPerOrder,0.015632853
+UniqueProducts Recency,0.015621532
+AvgItemsPerOrder,0.015507873
+PurchaseSpan,0.015491116
+AvgDaysBetween,0.01547891
+Monetary AvgOrderValue,0.015231481
+Recency PurchaseSpan,0.0151340645
+Frequency Recency,0.015042549
+UniqueProducts ReturnsFlag,0.014982708
+AvgOrderValue AvgItemsPerOrder,0.014890814
+AvgItemsPerOrder ReturnsFlag,0.014864961
+TotalItems Recency,0.014446414
+AvgOrderValue AvgDaysBetween,0.014441414
+Monetary,0.014357472
+AvgOrderValue,0.014216241
+Monetary TotalItems,0.0141796125
+Recency AvgItemsPerOrder,0.014116334
+Monetary Recency,0.013974088
+UniqueProducts AvgDaysBetween,0.013920377
+Monetary AvgItemsPerOrder,0.013679495
+Recency AvgDaysBetween,0.013673606
+Monetary AvgDaysBetween,0.013631138
+UniqueProducts,0.013484772
+TotalItems,0.013468414
+Frequency ReturnsFlag,0.01317356
+AvgDaysBetween ReturnsFlag,0.013142824
+PurchaseSpan AvgDaysBetween,0.013111555
+TotalItems AvgOrderValue,0.0126770735
+Frequency AvgDaysBetween,0.012552914
+ReturnsFlag,0.0061366577

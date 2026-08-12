@@ -1,0 +1,25 @@
+name: masterarbeit
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - numpy>=1.24
+  - pandas>=2.0
+  - scipy>=1.11
+  - scikit-learn>=1.4
+  - matplotlib>=3.8
+  - seaborn>=0.13
+  - tqdm>=4.66
+  - joblib>=1.3
+  - pyarrow>=14.0
+  # PyTorch (CPU) -- swap pytorch-cuda=12.1 for GPU
+  - pytorch::pytorch>=2.1
+  - pytorch::torchvision
+  - pip:
+    - xgboost>=2.0
+    - lightgbm>=4.1
+    - optuna>=3.5
+    # - umap-learn>=0.5   # uncomment if needed

@@ -1,0 +1,49 @@
+============================================================
+ONLINE RETAIL -- EDA SUMMARY
+============================================================
+Rows raw:     541,909
+Rows cleaned: 397,884
+Columns:      8
+
+-- Data types ------------------------------
+InvoiceNo              object
+StockCode              object
+Description            object
+Quantity                int64
+InvoiceDate    datetime64[ns]
+UnitPrice             float64
+CustomerID            float64
+Country                object
+
+-- Missing values (raw) --------------------
+Description      1454
+CustomerID     135080
+
+-- Cleaning steps --------------------------
+  Cancellations:       9,288
+  Neg. Quantity:       10,624
+  Neg. UnitPrice:      2,517
+  Missing CustomerID:  135,080
+
+-- Unique counts (cleaned) ------------------
+  Customers: 4,338
+  Invoices:  18,532
+  Products:  3,665
+  Countries: 37
+
+-- Time period ------------------------------
+  From: 2010-12-01 08:26:00
+  To:   2011-12-09 12:50:00
+
+-- Top 10 countries by transactions ---------
+Country
+United Kingdom    354321
+Germany             9040
+France              8341
+EIRE                7236
+Spain               2484
+Netherlands         2359
+Belgium             2031
+Switzerland         1841
+Portugal            1462
+Australia           1182

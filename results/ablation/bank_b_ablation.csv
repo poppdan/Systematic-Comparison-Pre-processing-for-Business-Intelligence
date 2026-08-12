@@ -1,0 +1,11 @@
+stage,stage_name,pipeline,dataset,mean_PR_AUC,std_PR_AUC,n_folds
+0,raw,b,bank,0.41236,0.01184,15
+1,impute,b,bank,0.41236,0.01184,15
+1,ohe,b,bank,0.4098,0.01318,15
+1,winsorize,b,bank,0.38842,0.01284,15
+1,boxcox,b,bank,0.43944,0.01626,15
+1,scale,b,bank,0.44147,0.01603,15
+1,pca90,b,bank,0.40443,0.0123,15
+1,pca20,b,bank,0.33027,0.00919,15
+2,full_pca90,b,bank,0.41851,0.01615,15
+2,full_pca20,b,bank,0.27002,0.00681,15

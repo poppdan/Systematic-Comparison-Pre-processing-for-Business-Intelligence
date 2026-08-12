@@ -1,0 +1,30 @@
+# --- Datasets: not redistributed -------------------------------------------
+# Appendix A.5 states that the datasets are obtained from the UCI Machine
+# Learning Repository rather than shipped with the code.  Keep it that way.
+data/raw/
+data/processed/
+
+# --- Regenerable outputs ---------------------------------------------------
+logs/
+models/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# --- Local caches ----------------------------------------------------------
+# Extracted full text of the cited papers, built by find_evidence.py.
+# These are verbatim copies of copyrighted articles and must not be published.
+scripts/.littext/
+
+# --- Environments ----------------------------------------------------------
+.venv/
+venv/
+env/
+.python-version
+
+# --- Editor and OS ---------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,62 @@
+============================================================
+BANK MARKETING -- EDA SUMMARY
+============================================================
+Rows:      41,188
+Columns:   22
+
+-- Data types ------------------------------
+age                 int64
+job                object
+marital            object
+education          object
+default            object
+housing            object
+loan               object
+contact            object
+month              object
+day_of_week        object
+duration            int64
+campaign            int64
+pdays               int64
+previous            int64
+poutcome           object
+emp.var.rate      float64
+cons.price.idx    float64
+cons.conf.idx     float64
+euribor3m         float64
+nr.employed       float64
+target             object
+target_bin          int64
+
+-- Missing values --------------------------
+  No missing values
+
+-- Class distribution (target) --------------
+target
+no     36548
+yes     4640
+  Ratio yes/no: 0.127
+  Positive share: 11.3%
+
+-- Numeric features (describe) --------------
+            age  duration  campaign     pdays  previous  emp.var.rate  cons.price.idx  cons.conf.idx  euribor3m  nr.employed  target_bin
+count  41188.00  41188.00  41188.00  41188.00  41188.00      41188.00        41188.00       41188.00   41188.00     41188.00    41188.00
+mean      40.02    258.29      2.57    962.48      0.17          0.08           93.58         -40.50       3.62      5167.04        0.11
+std       10.42    259.28      2.77    186.91      0.49          1.57            0.58           4.63       1.73        72.25        0.32
+min       17.00      0.00      1.00      0.00      0.00         -3.40           92.20         -50.80       0.63      4963.60        0.00
+25%       32.00    102.00      1.00    999.00      0.00         -1.80           93.08         -42.70       1.34      5099.10        0.00
+50%       38.00    180.00      2.00    999.00      0.00          1.10           93.75         -41.80       4.86      5191.00        0.00
+75%       47.00    319.00      3.00    999.00      0.00          1.40           93.99         -36.40       4.96      5228.10        0.00
+max       98.00   4918.00     56.00    999.00      7.00          1.40           94.77         -26.90       5.04      5228.10        1.00
+
+-- Categorical features ---------------------
+  job: 12 values | most frequent: admin. (10422)
+  marital: 4 values | most frequent: married (24928)
+  education: 8 values | most frequent: university.degree (12168)
+  default: 3 values | most frequent: no (32588)
+  housing: 3 values | most frequent: yes (21576)
+  loan: 3 values | most frequent: no (33950)
+  contact: 2 values | most frequent: cellular (26144)
+  month: 10 values | most frequent: may (13769)
+  day_of_week: 5 values | most frequent: thu (8623)
+  poutcome: 3 values | most frequent: nonexistent (35563)

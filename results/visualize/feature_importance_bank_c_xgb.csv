@@ -1,0 +1,145 @@
+,importance
+cons.price.idx nr.employed,0.36856377
+pdays nr.employed,0.044351943
+month_oct,0.040319342
+cons.conf.idx nr.employed,0.027319457
+contact_intensity,0.019319478
+emp.var.rate euribor3m,0.013410025
+pdays euribor3m,0.010264528
+euribor3m previous_x_poutcome_success,0.010012775
+emp.var.rate cons.price.idx,0.009341056
+cons.price.idx previous_x_poutcome_success,0.009324664
+pdays emp.var.rate,0.009223489
+poutcome_failure,0.009057739
+contact_cellular,0.00860277
+emp.var.rate previous_x_poutcome_success,0.0072410065
+previous contact_intensity,0.006424511
+pdays cons.conf.idx,0.006382932
+contact_telephone,0.0056673726
+pdays age_x_campaign,0.0048493124
+month_may,0.0048203957
+job_retired,0.0048152767
+previous cons.conf.idx,0.0046757027
+emp.var.rate,0.004568908
+previous euribor3m,0.004508791
+age pdays,0.0044575096
+age contact_intensity,0.0044461936
+pdays was_previously_contacted,0.004419103
+default_no,0.004375233
+pdays previous,0.00435109
+day_of_week_mon,0.0041853054
+cons.conf.idx euribor3m,0.0041183084
+nr.employed,0.004114751
+month_dec,0.004080225
+loan_unknown,0.00406771
+emp.var.rate contact_intensity,0.004010463
+age_x_campaign contact_intensity,0.0039853076
+campaign nr.employed,0.0039386735
+campaign cons.conf.idx,0.0039059871
+cons.price.idx euribor3m,0.0038965964
+campaign euribor3m,0.003875099
+cons.price.idx contact_intensity,0.0038541728
+contact_intensity was_previously_contacted,0.0037608922
+cons.price.idx age_x_campaign,0.0037589776
+age euribor3m,0.0037503422
+nr.employed age_x_campaign,0.0037420213
+euribor3m contact_intensity,0.0036951422
+month_jun,0.0036900742
+month_jul,0.003674083
+default_unknown,0.0036731442
+pdays cons.price.idx,0.0036637671
+month_mar,0.0036309052
+marital_unknown,0.0036242704
+euribor3m age_x_campaign,0.003616865
+cons.conf.idx contact_intensity,0.0036079185
+campaign age_x_campaign,0.0035880157
+job_self-employed,0.0035873246
+education_basic.9y,0.003578189
+cons.price.idx was_previously_contacted,0.0035670383
+campaign cons.price.idx,0.00356048
+job_housemaid,0.0035286474
+education_basic.6y,0.003507235
+job_technician,0.0035054507
+emp.var.rate age_x_campaign,0.0035048088
+cons.conf.idx,0.0035004565
+day_of_week_tue,0.0034863197
+euribor3m,0.003479896
+education_unknown,0.003461429
+cons.price.idx,0.0034384364
+housing_unknown,0.003427549
+age age_x_campaign,0.0033964408
+campaign emp.var.rate,0.0033885122
+cons.conf.idx was_previously_contacted,0.003378763
+campaign contact_intensity,0.0033653905
+previous age_x_campaign,0.003364174
+cons.conf.idx age_x_campaign,0.0033629453
+loan_no,0.0033309148
+age nr.employed,0.003308543
+day_of_week_wed,0.0033066876
+month_apr,0.0033055923
+job_unknown,0.0033013427
+age emp.var.rate,0.0032946465
+euribor3m was_previously_contacted,0.003293446
+age cons.price.idx,0.0032662556
+job_management,0.0032563934
+euribor3m nr.employed,0.0032466138
+age cons.conf.idx,0.0032441597
+job_entrepreneur,0.0032311333
+nr.employed previous_x_poutcome_success,0.0032086426
+marital_single,0.003197463
+day_of_week_fri,0.0031850266
+pdays contact_intensity,0.0031777981
+education_university.degree,0.0031656798
+age previous,0.0031389862
+job_blue-collar,0.0031211863
+previous,0.0031206673
+cons.price.idx cons.conf.idx,0.003120445
+job_unemployed,0.0031027505
+age was_previously_contacted,0.0030834128
+job_services,0.0030783862
+campaign pdays,0.0030718618
+nr.employed contact_intensity,0.0030538966
+campaign previous,0.0030409647
+education_basic.4y,0.003008338
+education_high.school,0.0029610503
+age_x_campaign previous_x_poutcome_success,0.002941751
+housing_yes,0.0029268728
+day_of_week_thu,0.002921267
+job_student,0.002910879
+previous emp.var.rate,0.002910515
+age,0.0029070105
+age campaign,0.0029058636
+loan_yes,0.0028937245
+education_professional.course,0.002888165
+month_nov,0.0028844993
+marital_divorced,0.0028841372
+previous cons.price.idx,0.0028806804
+age_x_campaign,0.002820008
+age_x_campaign was_previously_contacted,0.002728153
+marital_married,0.0026514612
+cons.conf.idx previous_x_poutcome_success,0.0026279057
+age previous_x_poutcome_success,0.0026215108
+campaign,0.002619436
+nr.employed was_previously_contacted,0.002605675
+emp.var.rate cons.conf.idx,0.0025895503
+month_aug,0.002574335
+job_admin.,0.0025702373
+campaign previous_x_poutcome_success,0.0025509591
+pdays previous_x_poutcome_success,0.00252408
+housing_no,0.0025055197
+emp.var.rate was_previously_contacted,0.0024784107
+previous nr.employed,0.0024134074
+campaign was_previously_contacted,0.0021464939
+contact_intensity previous_x_poutcome_success,0.0020856338
+previous was_previously_contacted,0.0020655263
+education_illiterate,0.0014250627
+pdays,0.0013284578
+previous_x_poutcome_success,0.0009775839
+was_previously_contacted,0.0
+emp.var.rate nr.employed,0.0
+previous previous_x_poutcome_success,0.0
+was_previously_contacted previous_x_poutcome_success,0.0
+default_yes,0.0
+month_sep,0.0
+poutcome_nonexistent,0.0
+poutcome_success,0.0

@@ -1,0 +1,13 @@
+job,count,share_pct
+admin.,10422,25.3
+blue-collar,9254,22.47
+technician,6743,16.37
+services,3969,9.64
+management,2924,7.1
+retired,1720,4.18
+entrepreneur,1456,3.54
+self-employed,1421,3.45
+housemaid,1060,2.57
+unemployed,1014,2.46
+student,875,2.12
+unknown,330,0.8

@@ -1,0 +1,8 @@
+stage,stage_name,pipeline,dataset,mean_PR_AUC,std_PR_AUC,n_folds
+0,raw,c,retail,0.73496,0.01556,15
+1,impute,c,retail,0.73496,0.01556,15
+1,ohe,c,retail,0.73496,0.01556,15
+1,scale,c,retail,0.76593,0.01834,15
+1,domain,c,retail,0.73496,0.01556,15
+1,interactions,c,retail,0.76663,0.01814,15
+2,full,c,retail,0.76559,0.01807,15

@@ -1,0 +1,7 @@
+stage,stage_name,pipeline,dataset,mean_PR_AUC,std_PR_AUC,n_folds
+0,raw,f,bank,0.41236,0.01184,15
+1,impute,f,bank,0.41236,0.01184,15
+1,ohe,f,bank,0.4098,0.01318,15
+1,scale,f,bank,0.44147,0.01603,15
+1,ftt,f,bank,0.45856,0.01701,15
+2,full,f,bank,0.46074,0.01637,15

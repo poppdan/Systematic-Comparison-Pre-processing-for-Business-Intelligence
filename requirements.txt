@@ -1,0 +1,30 @@
+# requirements.txt
+# Masterarbeit: Classical vs. AI Preprocessing for Business Intelligence
+# Python >= 3.10
+
+# Core data
+numpy>=1.24
+pandas>=2.0
+scipy>=1.11
+pyarrow>=14.0          # parquet support
+
+# Machine Learning
+scikit-learn>=1.4
+xgboost>=2.0
+lightgbm>=4.1
+optuna>=3.5            # hyperparameter optimisation
+
+# Deep Learning (CPU build sufficient for local dev; use GPU variant on cluster)
+torch>=2.1
+# GPU:  pip install torch>=2.1 --index-url https://download.pytorch.org/whl/cu121
+
+# Visualisation
+matplotlib>=3.8
+seaborn>=0.13
+
+# Optional: UMAP (representation_viz.py)
+# umap-learn>=0.5
+
+# Utilities
+tqdm>=4.66
+joblib>=1.3
