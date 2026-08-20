@@ -11,19 +11,27 @@ and Retail Transaction Data."*
 
 | | Question | Evidence produced by |
 |---|---|---|
-| **RQ1 — Predictive performance** | How do classical pre-processing pipelines (A–C) and AI-based representation-learning pipelines (D–F) differ in predictive performance on real business datasets? | `results_table_<ds>.csv`, `significance_table_<ds>.csv`, `ablation/` |
+| **RQ1 — Predictive performance** | How do classical pre-processing pipelines (A–C) and AI-based representation-learning pipelines (D–F) differ in predictive performance on real business datasets? | `results_table_<ds>.csv`, `ablation/` |
 | **RQ2 — Robustness** | Which pre-processing strategy is most robust to missing values, outliers and label noise? | `robustness/` |
 
-Statistical testing (Wilcoxon signed-rank on CV fold scores with Bonferroni
-correction) is part of the evaluation design for RQ1, not a separate research
-question. The magnitude of a difference is read off the difference in mean
-PR-AUC together with the fold standard deviation.
+RQ2 is answered only in restricted form. See "Robustness for D/E/F is measured
+with leaking encoders" under Known limitations: the AI pipelines cannot be
+compared against the classical ones on robustness, and the thesis withdraws
+that comparison rather than reporting it.
+
+A Wilcoxon signed-rank test with Bonferroni correction was computed
+(`significance_table_<ds>.csv`) but **is not used to support any conclusion.**
+Its independence assumption is violated by repeated cross-validation, so the
+p-values are not interpretable; see Known limitations. Every comparison in the
+thesis is decided on the difference in mean PR-AUC read against the fold
+standard deviation.
 
 ---
 
 ## Requirements
 
-Python ≥ 3.10. All commands are run from the `code/` directory.
+Python ≥ 3.10. All commands are run from the repository root, which is the
+`code/` directory of the thesis working tree.
 
 ```bash
 pip install -r requirements.txt      # or: conda env create -f environment.yml
@@ -32,7 +40,7 @@ pip install -r requirements.txt      # or: conda env create -f environment.yml
 ### Datasets
 
 The datasets are **not** redistributed here. Download them and place the raw
-files in `code/data/raw/`:
+files in `data/raw/`:
 
 | File | Source |
 |---|---|
@@ -64,6 +72,14 @@ combinations.
 
 The encoders receive categorical features label-encoded and numeric features
 standardised; Pipeline F embeds categoricals through a lookup table instead.
+
+A note on Pipeline C, since its name is misleading. The ablation attributes its
+entire advantage to the polynomial interaction terms and none of it to the
+domain features, which score 0.4121 against 0.4124 for raw input on Bank
+Marketing and reproduce the raw value exactly on Retail — where all seven
+pipelines share the same four RFM aggregates anyway, so C differs from A only
+by the interaction terms. The finding of the thesis is that interaction terms
+on standardised features pay off, not that domain knowledge does.
 
 ### Evaluation protocol
 
@@ -156,7 +172,7 @@ python scripts/run_experiment.py --dataset retail --pipeline a --model lr --no-h
 ## Repository layout
 
 ```
-code/
+.                               repository root (= code/ in the thesis tree)
   config.py                     central configuration (seed, folds, HPO budget, paths)
   requirements.txt
   environment.yml
@@ -214,30 +230,73 @@ Two points where the implementation differs from what the proposal described.
 
 ## Known limitations
 
-- **Wilcoxon p-values saturate.** With 15 paired samples the discrete minimum is
-  2/2¹⁵ ≈ 6.1 × 10⁻⁵, which a large share of comparisons attains exactly. The
-  test separates real differences from noise but says nothing about their size.
+- **The significance analysis is not usable.** Two independent problems. First,
+  the 15 scores of a 5 × 3 *repeated* cross-validation are not independent — the
+  repetitions re-use the same data and the folds within a repetition share 80 %
+  of their training material — which violates the assumption of the Wilcoxon
+  signed-rank test, understates the variance and rejects too readily. The
+  corrected resampled *t*-test of Nadeau & Bengio (2003) would have been the
+  right instrument. Bonferroni does not repair this, since it addresses
+  multiplicity rather than dependence. Second, with 15 paired samples the
+  discrete minimum p-value is 2/2¹⁵ ≈ 6.1 × 10⁻⁵, which a large share of
+  comparisons attains exactly, so the test cannot rank differences by magnitude
+  even where it applies. `significance_table_<ds>.csv` is retained for
+  completeness; no conclusion rests on it.
+- **Two datasets do not establish generality, and only one of them
+  discriminates.** On Retail all seven pipelines fall within 0.017 PR-AUC of one
+  another, so that dataset works mainly as a negative control; the evidence that
+  separates the pipelines comes essentially from Bank Marketing alone.
+- **Pipeline F sees the training labels, A–E do not.** Even implemented without
+  leakage, the supervised encoder receives a training signal that the design
+  withholds from the other six pipelines. Its defeat under the tuned protocol
+  survives that advantage, which makes the negative result stronger; its win in
+  the ablation is partly explained by it.
 - **`pdays = 999` is a sentinel value** ("client not previously contacted",
   96.3 % of rows; real values range 0–27). Only Pipeline C decodes it into a
-  binary flag. Pipelines A/B/D/E/F treat it as a numeric value — this is
-  intentional, since handling such domain quirks is exactly what Pipeline C is
-  meant to demonstrate, but it must be kept in mind when comparing them.
+  binary flag; A/B/D/E/F treat it as a number. The asymmetry is intentional —
+  handling such quirks is what Pipeline C is meant to demonstrate — but note that
+  the ablation finds the four Bank domain features, this flag among them, worth
+  −0.0002 PR-AUC in total. The capability is exercised and measured; it does not
+  pay off.
+- **Class weighting is not applied uniformly.** The MLP weights its loss by the
+  inverse class ratio; LR, RF, XGBoost and LightGBM do not, although all four
+  support it. PR-AUC is threshold-independent and unaffected, and the same model
+  meets every pipeline, so pipeline comparisons hold. Comparisons of F1 or Brier
+  *across models* should not be made: the MLP reaches F1 0.454 against 0.337–0.358
+  and Brier 0.152 against 0.077 on Bank.
+- **Encoder hyper-parameters were not tuned** while the downstream models received
+  20 Optuna trials each. The asymmetry disadvantages D/E/F. It was accepted for
+  compute reasons and because the observed deficits (0.013–0.016 PR-AUC) are of a
+  size that encoder tuning would plausibly narrow but not obviously reverse.
+- **Learning curves are unavailable for D/E/F.** Valid curves would require
+  re-fitting the encoder at each training fraction. Whether the deficit of the
+  learned representations narrows with more data is therefore open.
 - **Ablation uses Logistic Regression** as a fast, deterministic proxy for the
   downstream model. Step contributions may differ for tree-based learners.
-- **Robustness for D/E/F uses a frozen encoder**, i.e. it measures
-  *inference-time* robustness of an already deployed representation, not
-  robustness of the training procedure. Per-fold encoder training would be
-  prohibitive here (24 corruption settings × 15 folds × 3 pipelines × 2
-  datasets). The harness loads the encoder saved by the main experiment, which
-  predates the per-fold re-fitting described above; the baseline values for D
-  and F in the robustness table therefore sit 0.007 and 0.015 above their
-  ablation counterparts, and the absolute robustness level of the AI pipelines
-  is not directly comparable with that of the classical ones. The comparison
-  among D, E and F, which share the protocol, is unaffected.
-  Where corruption pushes a column past the 50 %-missing drop threshold, the
-  column is re-inserted as missing rather than removed — a deployed encoder
-  cannot change its input dimension at inference time. On Retail this is visible
-  at high corruption rates, since the dataset has only four RFM features.
+- **Robustness for D/E/F is measured with leaking encoders.** `run_robustness.py`
+  loads `dae_model.pkl` / `vae_model.pkl` / `ftt_model.pkl` from
+  `data/processed/<ds>/<pipe>/`. Those files are written by the standalone
+  scripts `scripts/ai/pipeline_[def].py`, which fit the encoder **once on the
+  whole training split** — they are *not* the per-fold encoders that
+  `run_experiment.py` caches under `fold_cache/`. Every validation fold of the
+  sweep is therefore encoded by a model that has already seen it, and for the
+  supervised Pipeline F including its labels. This is exactly the leakage that
+  safeguard 3 above removes from the main experiment. The signature is visible
+  in the results: Bank F enters the sweep at a base PR-AUC of 0.476, against
+  0.4572 in the main experiment and 0.4607 in the ablation.
+  **Consequence:** the thesis makes no claim about the robustness of the AI
+  pipelines relative to the classical ones. Valid comparisons are those *among*
+  D, E and F, which are distorted identically, and those among A, B and C, which
+  involve no encoder. Re-running the sweep with per-fold encoders (24 corruption
+  settings × 15 folds × 3 pipelines × 2 datasets) was outside the compute budget.
+- **Robustness measures inference-time behaviour.** Independently of the point
+  above, the encoders are applied frozen to corrupted data, which corresponds to
+  a deployed model meeting degraded input. It does not measure how robustly they
+  would *train* on corrupted data. Where corruption pushes a column past the
+  50 %-missing drop threshold, the column is re-inserted as missing rather than
+  removed — a deployed encoder cannot change its input dimension at inference
+  time. On Retail this is visible at high corruption rates, since the dataset has
+  only four RFM features.
 - **Per-fold encoder training is capped** at 60 epochs
   (`CV_ENCODER_EPOCHS` in `run_experiment.py`) for compute reasons, versus 100
   for the one-off pipeline runs.
